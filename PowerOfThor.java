@@ -9,57 +9,53 @@ public class PowerOfThor {
         int initialTX = in.nextInt(); // Thor's starting X position
         int initialTY = in.nextInt(); // Thor's starting Y position
 
-         if (initialTX < lightX)
-        {
-            if(initialTY == lightY){
-                System.out.println("E");
-            }
-            else if(initialTY < lightY)
-            {
-                System.out.println("NE");
-            }
-            else
-            {
-                System.out.println("SE");
-            }
-        }
-        else if(initialTX > lightX)
-        {
-            if(initialTY == lightY)
-            {
-                System.out.println("W");
-            }
-            else if(initialTY < lightY)
-            {
-                System.out.println("NW");
-            }
-            else 
-            {
-                System.out.println("SW");
-            }
-        }
-        else if(initialTY < lightY){
+        if(initialTY > lightY){
             if(initialTX == lightX){
                 System.out.println("N");
+                initialTY -=1;
+            }
+            else if ( initialTX > lightX ) 
+            {
+                System.out.println("NE");
+                initialTX +=1;
+                initialTY -=1;
             }
             else if (initialTX < lightX)
             {
-                System.out.println("NE");
-            }else {
                 System.out.println("NW");
+                initialTX-=1;
+                initialTY-=1;
             }
         }
-        else
+        else if (initialTY < lightY)
         {
             if(initialTX == lightX){
                 System.out.println("S");
+                initialTY +=1;
             }
-            else if (initialTX < lightX)
+            else if ( initialTX < lightX ) 
             {
                 System.out.println("SE");
-            }else {
+                initialTX +=1;
+                initialTY +=1;
+            }
+            else if (initialTX > lightX)
+            {
                 System.out.println("SW");
+                initialTX-=1;
+                initialTY+=1;
+            }
+        }       
+        else if (initialTY == lightY){
+            if(initialTX < lightX){
+                System.out.println("E");
+                initialTX+=1;    
+            }
+            else if (initialTX > lightX){
+                System.out.println("W");
+                initialTX-=1;
             }
         }
+        in.close();
     }
 }
